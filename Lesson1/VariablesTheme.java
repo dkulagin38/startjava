@@ -2,10 +2,10 @@ public class VariablesTheme {
     public static void main(String[] args) {
         createVariables();
         calculateGoodsValue();
-        printTheJavaWord();
+        printJavaWord();
         determineMinMaxValues();
         shiftValues();
-        printCharsAndCharcodes();
+        printCharsCharcodes();
         multiplyAddDigitsOfNumber();
         printDukeMascot();
         determineHundredsTensOnes();
@@ -18,23 +18,21 @@ public class VariablesTheme {
 
         byte countOfCores = 4;
         short cacheL3 = 6144;
-        int processorFrequency = 3300;
+        int cpuFrequency = 3300;
         long memoryByte = 34359738368l;
         float hddCapacity = 1.81f;
         double averagePercentOfMemoryUsage = 33.4647687684213d;
-        char firstNameHDD = 'c';
+        char firstNameHdd = 'c';
         boolean isIntelCore = true;
 
-        System.out.println("Количество ядер: " + countOfCores);
-        System.out.println("Частота процессора: " + processorFrequency);
-        System.out.println("Кэш L3, КБ: " + cacheL3);
-        System.out.println("Оперативная память, Б: " + memoryByte);
-        System.out.println("Объем жесткого диска, ТБ: " + hddCapacity);
-        System.out.println("Имя первого жесткого диска: " + firstNameHDD);
-        System.out.println("Процессор семейства Intel: " + isIntelCore);
-        System.out.println("Средний процент использования памяти: " + averagePercentOfMemoryUsage);
-        // Output of empty divider string
-        System.out.println("");
+        System.out.println("Количество ядер: " + countOfCores + 
+                "\nЧастота процессора: " + cpuFrequency + 
+                "\nКэш L3, КБ: " + cacheL3 + 
+                "\nОперативная память, Б: " + memoryByte + 
+                "\nОбъем жесткого диска, ТБ: " + hddCapacity + 
+                "\nИмя первого жесткого диска: " + firstNameHdd + 
+                "\nПроцессор семейства Intel: " + isIntelCore + 
+                "\nСредний процент использования памяти: " + averagePercentOfMemoryUsage + "\n");
     }
 
     public static void calculateGoodsValue() {
@@ -53,100 +51,76 @@ public class VariablesTheme {
         int discountSum = totalPrice * discountPercent / 100;
         int totalDiscountPrice = totalPrice - discountSum;
 
-        System.out.println("Сумма скидки: " + discountSum + " руб");
-        System.out.println("Общая стоимость товаров со скидкой: " + totalDiscountPrice + " руб");
-        // Output of empty divider string
-        System.out.println("");
+        System.out.println("Сумма скидки: " + discountSum + " руб" + 
+                "\nОбщая стоимость товаров со скидкой: " + totalDiscountPrice + " руб\n");
     }
 
-    public static void printTheJavaWord() {
+    public static void printJavaWord() {
         // Вывод на консоль слова JAVA
         System.out.println("3. Вывод на консоль слова JAVA");
 
-        System.out.println("   J    a  v     v  a");
-        System.out.println("   J   a a  v   v  a a");
-        System.out.println("J  J  aaaaa  V V  aaaaa");
-        System.out.println(" JJ  a     a  V  a     a");
-        // Output of empty divider string
-        System.out.println("");
+        System.out.println("   J    a  v     v  a" + 
+                "\n   J   a a  v   v  a a" + 
+                "\nJ  J  aaaaa  V V  aaaaa" + 
+                "\n JJ  a     a  V  a     a" + 
+                "\n JJ  a     a  V  a     a\n");
     }
 
     public static void determineMinMaxValues() {
         // Отображение min и max значений числовых типов данных
-       System.out.println("4. Отображение min и max значений числовых типов данных");
+        System.out.println("4. Отображение min и max значений числовых типов данных");
 
-       byte maxByte = 127;
-       short maxShort = 32_767;
-       int maxInt = 2_147_483_647;
-       long maxLong = 9_223_372_036_854_775_807l;
+        byte maxByte = 127;
+        short maxShort = 32_767;
+        int maxInt = 2_147_483_647;
+        long maxLong = 9_223_372_036_854_775_807l;
 
-       System.out.println("Максимальное число типа byte: " + maxByte);
-       System.out.println("Максимальное число типа short: " + maxShort);
-       System.out.println("Максимальное число типа int: " + maxInt);
-       System.out.println("Максимальное число типа long : " + maxLong);
+        System.out.println("Максимальное число типа byte: " + maxByte + 
+                "\nМаксимальное число типа short: " + maxShort + 
+                "\nМаксимальное число типа int: " + maxInt + 
+                "\nМаксимальное число типа long : " + maxLong + "\n");
 
-        // Output of empty divider string
-        System.out.println("");
-
-       // Increment/decrement
-       maxByte++;
-       System.out.println("Инкрементированное максимальное число типа byte: " + maxByte);
-       maxByte--;
-       System.out.println("Декрементированное максимальное число типа byte: " + maxByte);
-
-       maxShort++;
-       System.out.println("Инкрементированное максимальное число типа short: " + maxShort);
-       maxShort--;
-       System.out.println("Декрементированное максимальное число типа short: " + maxShort);
-
-       maxInt++;
-       System.out.println("Инкрементированное максимальное число типа int: " + maxInt);
-       maxInt--;
-       System.out.println("Декрементированное максимальное число типа int: " + maxInt);
-
-       maxLong++;
-       System.out.println("Инкрементированное максимальное число типа long: " + maxLong);
-       maxLong--;
-       System.out.println("Декрементированное максимальное число типа long: " + maxLong);
-        // Output of empty divider string
-        System.out.println("");
+        // Increment/decrement
+        System.out.println("Инкрементированное максимальное число типа byte: " + ++maxByte + 
+                "\nДекрементированное максимальное число типа byte: " + --maxByte + 
+                "\nИнкрементированное максимальное число типа short: " + ++maxShort + 
+                "\nДекрементированное максимальное число типа short: " + --maxShort + 
+                "\nИнкрементированное максимальное число типа int: " + ++maxInt + 
+                "\nДекрементированное максимальное число типа int: " + --maxInt + 
+                "\nИнкрементированное максимальное число типа long: " + ++maxLong + 
+                "\nДекрементированное максимальное число типа long: " + --maxLong + "\n");
     }
 
     public static void shiftValues() {
-        // Перестановка значений переменных
-       System.out.println("5. Перестановка значений переменных");
+        System.out.println("5. Перестановка значений переменных");
        
-       float valueFloat = 1.5f;
-       double valueDouble = 3.141592653589793238462643d;
-       System.out.println("Исходное значение переменной типа float: " + valueFloat);
-       System.out.println("Исходное значение переменной типа double: " + valueDouble);
+        float valueFloat = 1.5f;
+        double valueDouble = 3.141592653589793238462643d;
+        System.out.println("Исходное значение переменной типа float: " + valueFloat + 
+                "\nИсходное значение переменной типа double: " + valueDouble);
 
        double interValue = valueFloat;
        valueFloat = (float) valueDouble;
        valueDouble = interValue;
-       System.out.println("Новое значение переменной типа float: " + valueFloat);
-       System.out.println("Новое значение переменной типа double: " + valueDouble);
-        // Output of empty divider string
-        System.out.println("");
+        System.out.println("Новое значение переменной типа float: " + valueFloat + 
+                "\nНовое значение переменной типа double: " + valueDouble + "\n");
     }
 
-    public static void printCharsAndCharcodes() {
+    public static void printCharsCharcodes() {
         // Вывод символов и их кодов
         System.out.println("6. Вывод символов и их кодов");
 
-        int value1 = 35;
-        int value2 = 38;
-        int value3 = 64;
-        int value4 = 94;
-        int value5 = 95;
+        int codeChar1 = 35;
+        int codeChar2 = 38;
+        int codeChar3 = 64;
+        int codeChar4 = 94;
+        int codeChar5 = 95;
 
-        System.out.println("Код: " + value1 + " == " + Character.toString(value1));
-        System.out.println("Код: " + value2 + " == " + Character.toString(value2));
-        System.out.println("Код: " + value3 + " == " + Character.toString(value3));
-        System.out.println("Код: " + value4 + " == " + Character.toString(value4));
-        System.out.println("Код: " + value5 + " == " + Character.toString(value5));
-        // Output of empty divider string
-        System.out.println("");
+        System.out.println("Код: " + codeChar1 + " == " + (char) codeChar1 + 
+                "\nКод: " + codeChar2 + " == " + (char) codeChar2 + 
+                "\nКод: " + codeChar3 + " == " + (char) codeChar3 + 
+                "\nКод: " + codeChar4 + " == " + (char) codeChar4 + 
+                "\nКод: " + codeChar5 + " == " + (char) codeChar5 + "\n");
     }
 
     public static void multiplyAddDigitsOfNumber() {
@@ -155,22 +129,15 @@ public class VariablesTheme {
 
         int number = 345;
 
-        /*
-        * Unfortunately I don't know how to get digits withot using loop.
-        * So far I'm getting the digits just by index of symbol.
-        */
-        String numberStr = String.valueOf(number);
-        char[] digitsChar = numberStr.toCharArray();
-        int digit1 = digitsChar[0] - '0';
-        int digit2 = digitsChar[1] - '0';
-        int digit3 = digitsChar[2] - '0';
+        int digit1 = number / 100;
+        int digit2 = number / 10 - digit1 * 10;
+        int digit3 = number % 10;
 
         int multiplication = digit1 * digit2 * digit3;
         int addition = digit1 + digit2 + digit3;
-        System.out.println("Произведение цифр числа " + number + ": " + multiplication);
-        System.out.println("Сумма цифр числа " + number + ": " + addition);
-        // Output of empty divider string
-        System.out.println("");
+
+        System.out.println("Произведение цифр числа " + number + ": " + multiplication + 
+                "\nСумма цифр числа " + number + ": " + addition + "\n");
     }
 
     public static void printDukeMascot() {
@@ -178,56 +145,41 @@ public class VariablesTheme {
         System.out.println("8. Вывод на консоль ASCII-арт Дюка");
 
         // ASCII character codes
-        String strSpace = Character.toString(32);
-        String strSlach = Character.toString(47);
-        String strBackSlach = Character.toString(92);
-        String strLeftParenthesis = Character.toString(40);
-        String strRightParenthesis = Character.toString(41);
-        String strUnderscore = Character.toString(95);
+        char space = (char) 32;
+        char slash = (char) 47;
+        char backslash = (char) 92;
+        char lBracket = (char) 40;
+        char rBracket = (char) 41;
+        char underscore = (char) 95;
 
-        String string1 = strSpace + strSpace + strSpace + strSpace + strSlach + strBackSlach;
-        String string2 = strSpace + strSpace + strSpace + strSlach + strSpace + strSpace + 
-                strBackSlach;
-        String string3 = strSpace + strSpace + strSlach + strUnderscore + 
-                strLeftParenthesis + strSpace + strRightParenthesis + strBackSlach;
-        String string4 = strSpace + strSlach + strSpace + strSpace + strSpace + strSpace + 
-                strSpace + strSpace + strBackSlach;
-        String string5 = strSlach + strUnderscore + strUnderscore + strUnderscore 
-                + strUnderscore + strSlach + strBackSlach + strUnderscore 
-                + strUnderscore + strBackSlach;
-
-        System.out.println(string1);
-        System.out.println(string2);
-        System.out.println(string3);
-        System.out.println(string4);
-        System.out.println(string5);
-        // Output of empty divider string
-        System.out.println("");
+        System.out.println("" + space + space + space + space + slash + backslash + "\n" + 
+                space + space + space + slash + space + space + backslash + "\n" + 
+                space + space + slash + underscore + lBracket + space + rBracket 
+                + backslash + "\n" + 
+                space + slash + space + space + space + space + space + space + backslash + "\n" + 
+                slash + underscore + underscore + underscore + underscore + 
+                slash + backslash + underscore + underscore + backslash + "\n");
     }
 
     public static void determineHundredsTensOnes() {
         // Отображение количества сотен, десятков и единиц числа
         System.out.println("9. Отображение количества сотен, десятков и единиц числа");
         
-        int initialValue = 123;
+        int totalValue = 123;
 
-        int hundreds = initialValue / 100;
-        int tens = initialValue / 10 - hundreds * 10;
-        int ones = initialValue - hundreds * 100 - tens * 10;
+        int hundreds = totalValue / 100;
+        int tens = totalValue / 10 - hundreds * 10;
+        int ones = totalValue % 10;
 
-        System.out.println("Исходное число: " + initialValue);
-        System.out.println("Сотни: " + hundreds);
-        System.out.println("Десятки: " + tens);
-        System.out.println("Единицы: " + ones);
-        // Output of empty divider string
-        System.out.println("");
+        System.out.println("Исходное число: " + totalValue + "\nСотни: " + hundreds + 
+                "\nДесятки: " + tens + "\nЕдиницы: " + ones + "\n");
     }
 
     public static void convertTime() {
         // Преобразование секунд
         System.out.println("10. Преобразование секунд");
 
-        int initialSeconds = 86399;
+        int totalSeconds = 86399;
 
         /*
         * Anyone knows that 24 hours equal 86400 sec.
@@ -235,9 +187,9 @@ public class VariablesTheme {
         */
 
         // 60 - min/hour, 60 - sec/min.
-        int hours = initialSeconds / 60 / 60;
-        int minutes = (initialSeconds - hours * 60 * 60) / 60;
-        int seconds = initialSeconds - hours * 60 * 60 - minutes * 60;
+        int hours = totalSeconds / 60 / 60;
+        int minutes = (totalSeconds - hours * 60 * 60) / 60;
+        int seconds = totalSeconds % 60;
 
         System.out.println(hours + ":" + minutes + ":" + seconds);
     }

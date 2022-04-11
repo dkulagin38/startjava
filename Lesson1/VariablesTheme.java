@@ -62,7 +62,6 @@ public class VariablesTheme {
         System.out.println("   J    a  v     v  a" + 
                 "\n   J   a a  v   v  a a" + 
                 "\nJ  J  aaaaa  V V  aaaaa" + 
-                "\n JJ  a     a  V  a     a" + 
                 "\n JJ  a     a  V  a     a\n");
     }
 
@@ -127,30 +126,29 @@ public class VariablesTheme {
         // Произведение и сумма цифр числа
         System.out.println("7. Произведение и сумма цифр числа");
 
-        int number = 345;
+        int scrNumber = 345;
 
-        int digit1 = number / 100;
-        int digit2 = number / 10 - digit1 * 10;
-        int digit3 = number % 10;
+        int digit1 = scrNumber / 100;
+        int digit2 = scrNumber / 10 % 10;
+        int digit3 = scrNumber % 10;
 
         int multiplication = digit1 * digit2 * digit3;
         int addition = digit1 + digit2 + digit3;
 
-        System.out.println("Произведение цифр числа " + number + ": " + multiplication + 
-                "\nСумма цифр числа " + number + ": " + addition + "\n");
+        System.out.println("Произведение цифр числа " + scrNumber + ": " + multiplication + 
+                "\nСумма цифр числа " + scrNumber + ": " + addition + "\n");
     }
 
     public static void printDukeMascot() {
         // Вывод на консоль ASCII-арт Дюка
         System.out.println("8. Вывод на консоль ASCII-арт Дюка");
 
-        // ASCII character codes
-        char space = (char) 32;
-        char slash = (char) 47;
-        char backslash = (char) 92;
-        char lBracket = (char) 40;
-        char rBracket = (char) 41;
-        char underscore = (char) 95;
+        char space = ' ';
+        char slash = '/';
+        char backslash = '\\';
+        char lBracket = '(';
+        char rBracket = ')';
+        char underscore = '_';
 
         System.out.println("" + space + space + space + space + slash + backslash + "\n" + 
                 space + space + space + slash + space + space + backslash + "\n" + 
@@ -165,13 +163,13 @@ public class VariablesTheme {
         // Отображение количества сотен, десятков и единиц числа
         System.out.println("9. Отображение количества сотен, десятков и единиц числа");
         
-        int totalValue = 123;
+        int scrNumber = 123;
 
-        int hundreds = totalValue / 100;
-        int tens = totalValue / 10 - hundreds * 10;
-        int ones = totalValue % 10;
+        int hundreds = scrNumber / 100;
+        int tens = scrNumber / 10 % 10;
+        int ones = scrNumber % 10;
 
-        System.out.println("Исходное число: " + totalValue + "\nСотни: " + hundreds + 
+        System.out.println("Исходное число: " + scrNumber + "\nСотни: " + hundreds + 
                 "\nДесятки: " + tens + "\nЕдиницы: " + ones + "\n");
     }
 
@@ -188,7 +186,7 @@ public class VariablesTheme {
 
         // 60 - min/hour, 60 - sec/min.
         int hours = totalSeconds / 60 / 60;
-        int minutes = (totalSeconds - hours * 60 * 60) / 60;
+        int minutes = totalSeconds / 60 % 60;
         int seconds = totalSeconds % 60;
 
         System.out.println(hours + ":" + minutes + ":" + seconds);

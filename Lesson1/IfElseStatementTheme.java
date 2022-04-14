@@ -1,14 +1,14 @@
 public class IfElseStatementTheme {
     public static void main(String[] args) {
         transferPseudocodeToJava();
-        findMaxMinNumber();
-        defineNumber();
-        searchEqualDigitsInNumber();
-        defineCharTypeByCode();
-        getDataOfBankDeposits();
-        defineGradesClasses();
+        determineMaxMinNum();
+        determineNum();
+        searchEqualDigitsInNum();
+        determineCharTypeByCode();
+        determineBankAccrual();
+        determineGradesSubjects();
         calculateProfitLoss();
-        defineOfExistingTriangle();
+        determineOfExistingTriangle();
         amountBanknotes();
     }
 
@@ -47,122 +47,86 @@ public class IfElseStatementTheme {
         }
     }
 
-    public static void findMaxMinNumber() {
+    public static void determineMaxMinNum() {
         // Поиск максимального и минимального числа
         System.out.println("\n2. Поиск максимального и минимального числа\n");
 
-        int srcNumber1 = 123;
-        int srcNumber2 = 789;
+        int srcNum1 = 123;
+        int srcNum2 = 789;
 
-        int maxNumber;
-        int minNumber;
+        /*
+         * I didn't understand how to use only one variable (maxNum without minNum) 
+         * and one command "println".
+        */
 
-        if (srcNumber1 > srcNumber2) {
-            maxNumber = srcNumber1;
-            minNumber = srcNumber2;
-        } else if (srcNumber1 < srcNumber2) {
-            maxNumber = srcNumber2;
-            minNumber = srcNumber1;
-        } else {
-            System.out.println("Исходные числа: " + srcNumber1 + " и " + srcNumber2 + 
+        if (srcNum1 == srcNum2) {
+            System.out.println("Исходные числа: " + srcNum1 + " и " + srcNum2 + 
                     ".\nНет максимального/минимального числа.");
             return;
         }
 
-        System.out.println("Исходные числа: " + srcNumber1 + " и " + srcNumber2 + 
-                ".\nМаксимальное число: " + maxNumber + ", минимальное число: " + minNumber + ".");
+        int outNum = srcNum1 > srcNum2 ? srcNum1 : srcNum2;
+        System.out.println("Исходные числа: " + srcNum1 + " и " + srcNum2 + 
+                ".\nМаксимальное число: " + outNum + ".");
+
+        outNum = srcNum1 < srcNum2 ? srcNum1 : srcNum2;
+        System.out.println("Минимальное число: " + outNum + ".");
     }
 
-    public static void defineNumber() {
+    public static void determineNum() {
         // Работа с числом
         System.out.println("\n3. Работа с числом\n");
 
-        int srcNumber = -124;
+        int srcNum = 789;
 
-        /*
-         * I didn't use boolean types (e.g. isEven, isNegative, isZero)
-         * because I'd like to print text messages (e.g. "четное", "нечетное").
-        */
-
-        String attributeOddEven = "нечетное";
-        if (srcNumber % 2 == 0) {
-            attributeOddEven = "четное";
-        }
-
-        String attributePositiveNegative = "-";
-        String attributeZero = "-";
-        if (srcNumber < 0) {
-            attributePositiveNegative = "отрицательное";
-        } else if (srcNumber > 0) {
-            attributePositiveNegative = "положительное";
-        } else {
-            attributeZero = "ноль";
-        }
-
-        System.out.println("Исходное число: " + srcNumber + 
-                "\nчетное/нечетное: " + attributeOddEven + "; " + 
-                "\nотрицательное/положительное: " + attributePositiveNegative + "; " + 
-                "\nноль: " + attributeZero + ".");
+        System.out.println("Исходное число: " + srcNum + 
+                "\nчетное/нечетное: " + (srcNum % 2 == 0 ? "четное" : "нечетное") + "; " + 
+                "\nотрицательное/положительное: " + 
+                (srcNum == 0 ? "-" : (srcNum > 0 ? "положительное" : "отрицательное")) + "; " + 
+                "\nноль: " + (srcNum == 0 ? "это ноль" : "-") + ".");
     }
 
-    public static void searchEqualDigitsInNumber() {
+    public static void searchEqualDigitsInNum() {
         // Поиск одинаковых цифр в числах
         System.out.println("\n4. Поиск одинаковых цифр в числах\n");
 
-        int srcNumber1 = 289;
-        int srcNumber2 = 189;
-        System.out.println("Исходные числа: " + srcNumber1 + " и " + srcNumber2);
+        int srcNum1 = 289;
+        int srcNum2 = 189;
+        System.out.println("Исходные числа: " + srcNum1 + " и " + srcNum2);
 
-        if (srcNumber1 / 100 == srcNumber2 / 100) {
+        if (srcNum1 / 100 == srcNum2 / 100) {
             System.out.println(" Совпали сотни.");
         }
 
-        if (srcNumber1 / 10 % 10 == srcNumber2 / 10 % 10) {
+        if (srcNum1 / 10 % 10 == srcNum2 / 10 % 10) {
             System.out.println(" Совпали десятки.");
         }
 
-        if (srcNumber1 % 10 == srcNumber2 % 10) {
+        if (srcNum1 % 10 == srcNum2 % 10) {
             System.out.println(" Совпали единицы.");
         }
     }
 
-    public static void defineCharTypeByCode() {
+    public static void determineCharTypeByCode() {
         // Определение буквы, числа или символа по их коду
         System.out.println("\n5. Определение буквы, числа или символа по их коду\n");
 
-        char srcCharacter = '\u005A';
-        int codeChar = (int) srcCharacter;
+        char unknownChar = '\u005A';
 
-        boolean isUpperCaseLetter = false;
-        boolean isLowerCaseLetter = false;
-        boolean isDigit = false;
-
-        if ((codeChar >= 65 && codeChar <= 90) || (codeChar >= 128 && codeChar <= 159)) {
-            isUpperCaseLetter = true;
-        } else if ((codeChar >= 97 && codeChar <= 122) || (codeChar >= 160 && codeChar <= 175) 
-                || (codeChar >= 224 && codeChar <= 241)) {
-            isLowerCaseLetter = true;
-        } else if (codeChar >= 48 && codeChar <= 57) {
-            isDigit = true;
-        }
-
-//        boolean isAnotherChar = !(isUpperCaseLetter || isLowerCaseLetter || isDigit);
-
-        String charInformation;
-        if (isUpperCaseLetter) {
-            charInformation = "большая буква";
-        } else if (isLowerCaseLetter) {
-            charInformation = "маленькая буква";
-        } else if (isDigit) {
-            charInformation = "число";
+        if ((unknownChar >= 'A' && unknownChar <= 'Z') || 
+                (unknownChar >= 'А' && unknownChar <= 'Я')) {
+                    System.out.println("Character: " + unknownChar + " - большая буква.");
+        } else if ((unknownChar >= 'a' && unknownChar <= 'z') || 
+                (unknownChar >= 'а' && unknownChar <= 'я')) {
+                    System.out.println("Character: " + unknownChar + " - маленькая буква.");
+        } else if (unknownChar >= '0' && unknownChar <= '9') {
+            System.out.println("Character: " + unknownChar + " - число.");
         } else {
-            charInformation = "не буква и не число";
+                    System.out.println("Character: " + unknownChar + " - не буква и не число.");
         }
-
-        System.out.println("Character: " + srcCharacter + " - " + charInformation + ".");
     }
 
-    public static void getDataOfBankDeposits() {
+    public static void determineBankAccrual() {
         // Определение суммы вклада и начисленных банком %
         System.out.println("\n6. Определение суммы вклада и начисленных банком %\n");
 
@@ -185,7 +149,7 @@ public class IfElseStatementTheme {
                 ", итоговая сумма с % " + sumTotal);
     }
 
-    public static void defineGradesClasses() {
+    public static void determineGradesSubjects() {
         // Определение оценки по предметам
         System.out.println("\n7. Определение оценки по предметам\n");
         
@@ -227,11 +191,17 @@ public class IfElseStatementTheme {
         if (yearProfitLoss >= 0) {
             System.out.println("Годовая прибыль: +" + yearProfitLoss + " р");
         } else {
-            System.out.println("Годовой убыток: " + (-yearProfitLoss) + " р");
+            /* 
+             * There is no negative profit or loss in accounting.
+             * Negative profit is loss, negative loss is profit.
+             * So I typed "(-yearProfitLoss)" before that the user can see positive loss.
+            */
+            // System.out.println("Годовой убыток: " + (-yearProfitLoss) + " р");
+            System.out.println("Годовой убыток: " + yearProfitLoss + " р");
         }
     }
 
-    public static void defineOfExistingTriangle() {
+    public static void determineOfExistingTriangle() {
         // Определение существования треугольника
         System.out.println("\n9. Определение существования треугольника\n");
 
@@ -254,8 +224,8 @@ public class IfElseStatementTheme {
         }
 
         int hypotenuse = lengthSide1;
-        int cathetus1;
-        int cathetus2;
+        int cathetus1 = lengthSide2;
+        int cathetus2 = lengthSide3;
 
         if (lengthSide2 > hypotenuse) {
             hypotenuse = lengthSide2;
@@ -265,12 +235,8 @@ public class IfElseStatementTheme {
             hypotenuse = lengthSide3;
         }
 
-        if (hypotenuse == lengthSide1) {
-            cathetus1 = lengthSide2;
-            cathetus2 = lengthSide3;
-        } else if (hypotenuse == lengthSide2) {
+        if (hypotenuse == lengthSide2) {
             cathetus1 = lengthSide1;
-            cathetus2 = lengthSide3;
         } else {
             cathetus1 = lengthSide1;
             cathetus2 = lengthSide2;
@@ -304,9 +270,8 @@ public class IfElseStatementTheme {
         int banknoteValue50 = 50;
 
         int amountBanknote50 = sumMoney / banknoteValue50;
-        int amountBanknote10 = (sumMoney - amountBanknote50 * banknoteValue50) / banknoteValue10;
-        int amountBanknote1 = sumMoney - amountBanknote50 * banknoteValue50 - 
-                amountBanknote10 * banknoteValue10;
+        int amountBanknote10 = sumMoney / banknoteValue50 % banknoteValue10;
+        int amountBanknote1 = sumMoney % banknoteValue10;
         int totalSum = amountBanknote50 * banknoteValue50 + amountBanknote10 * banknoteValue10 + 
                 amountBanknote1 * banknoteValue1;
 

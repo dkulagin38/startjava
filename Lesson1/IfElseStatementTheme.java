@@ -54,23 +54,14 @@ public class IfElseStatementTheme {
         int srcNum1 = 123;
         int srcNum2 = 789;
 
-        /*
-         * I didn't understand how to use only one variable (maxNum without minNum) 
-         * and one command "println".
-        */
-
-        if (srcNum1 == srcNum2) {
-            System.out.println("Исходные числа: " + srcNum1 + " и " + srcNum2 + 
-                    ".\nНет максимального/минимального числа.");
-            return;
+        System.out.println("Исходные числа: " + srcNum1 + " и " + srcNum2 + ".");
+        if (srcNum1 > srcNum2) {
+            System.out.println("Максимальное: " + srcNum1 + ", минимальное: " + srcNum2 + ".");
+        } else if (srcNum1 < srcNum2) {
+            System.out.println("Максимальное: " + srcNum2 + ", минимальное: " + srcNum1 + ".");
+        } else {
+            System.out.println("Числа равны.");
         }
-
-        int outNum = srcNum1 > srcNum2 ? srcNum1 : srcNum2;
-        System.out.println("Исходные числа: " + srcNum1 + " и " + srcNum2 + 
-                ".\nМаксимальное число: " + outNum + ".");
-
-        outNum = srcNum1 < srcNum2 ? srcNum1 : srcNum2;
-        System.out.println("Минимальное число: " + outNum + ".");
     }
 
     public static void determineNum() {
@@ -79,11 +70,15 @@ public class IfElseStatementTheme {
 
         int srcNum = 789;
 
-        System.out.println("Исходное число: " + srcNum + 
-                "\nчетное/нечетное: " + (srcNum % 2 == 0 ? "четное" : "нечетное") + "; " + 
-                "\nотрицательное/положительное: " + 
-                (srcNum == 0 ? "-" : (srcNum > 0 ? "положительное" : "отрицательное")) + "; " + 
-                "\nноль: " + (srcNum == 0 ? "это ноль" : "-") + ".");
+        System.out.println("Исходное число: " + srcNum);
+        System.out.print("" + (srcNum % 2 == 0 ? "Четное" : "Нечетное"));
+        if (srcNum > 0) {
+            System.out.println(", положительное, не ноль.");
+        } else if (srcNum < 0) {
+            System.out.println(", отрицательное, не ноль.");
+        } else {
+            System.out.println(", ноль.");
+        }
     }
 
     public static void searchEqualDigitsInNum() {
@@ -115,14 +110,14 @@ public class IfElseStatementTheme {
 
         if ((unknownChar >= 'A' && unknownChar <= 'Z') || 
                 (unknownChar >= 'А' && unknownChar <= 'Я')) {
-                    System.out.println("Character: " + unknownChar + " - большая буква.");
+                    System.out.println("Символ: '" + unknownChar + "' - большая буква.");
         } else if ((unknownChar >= 'a' && unknownChar <= 'z') || 
                 (unknownChar >= 'а' && unknownChar <= 'я')) {
-                    System.out.println("Character: " + unknownChar + " - маленькая буква.");
+                    System.out.println("Символ: '" + unknownChar + "' - маленькая буква.");
         } else if (unknownChar >= '0' && unknownChar <= '9') {
-            System.out.println("Character: " + unknownChar + " - число.");
+            System.out.println("Символ: '" + unknownChar + "' - число.");
         } else {
-                    System.out.println("Character: " + unknownChar + " - не буква и не число.");
+            System.out.println("Символ: '" + unknownChar + "' - не буква и не число.");
         }
     }
 
@@ -165,15 +160,25 @@ public class IfElseStatementTheme {
     public static int getGradeByPercent(int percent) {
         int grade;
 
-        if (percent <= 60) {
-            grade = 2;
-        } else if (percent <= 73) {
-            grade = 3;
-        } else if (percent <= 91) {
-            grade = 4;
-        } else {
-            grade = 5;
-        }
+        /* 
+         * Previously I was formatting the code according to the article:
+         * 'https://topjava.ru/blog/pravila-formatirovaniya-koda-v-java', item 3.4 'f)'.
+        */
+
+        // if (percent <= 60) {
+        //     grade = 2;
+        // } else if (percent <= 73) {
+        //     grade = 3;
+        // } else if (percent <= 91) {
+        //     grade = 4;
+        // } else {
+        //     grade = 5;
+        // }
+
+        if (percent <= 60) grade = 2;
+        else if (percent <= 73) grade = 3;
+        else if (percent <= 91) grade = 4;
+        else grade = 5;
 
         return grade;
     }
@@ -191,12 +196,6 @@ public class IfElseStatementTheme {
         if (yearProfitLoss >= 0) {
             System.out.println("Годовая прибыль: +" + yearProfitLoss + " р");
         } else {
-            /* 
-             * There is no negative profit or loss in accounting.
-             * Negative profit is loss, negative loss is profit.
-             * So I typed "(-yearProfitLoss)" before that the user can see positive loss.
-            */
-            // System.out.println("Годовой убыток: " + (-yearProfitLoss) + " р");
             System.out.println("Годовой убыток: " + yearProfitLoss + " р");
         }
     }

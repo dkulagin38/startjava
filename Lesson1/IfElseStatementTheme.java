@@ -71,7 +71,7 @@ public class IfElseStatementTheme {
         int srcNum = 789;
 
         System.out.println("Исходное число: " + srcNum);
-        System.out.print("" + (srcNum % 2 == 0 ? "Четное" : "Нечетное"));
+        System.out.print((srcNum % 2 == 0 ? "Четное" : "Нечетное"));
         if (srcNum > 0) {
             System.out.println(", положительное, не ноль.");
         } else if (srcNum < 0) {

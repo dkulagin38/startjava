@@ -8,7 +8,7 @@ public class CyclesTheme {
         printNumsInSomeLines();
         checkEvenOfCountDigitsOne();
         printGeometricFigures();
-        printASCIIChars();
+        printAsciiChars();
         checkPalindrome();
         defineHappyNum();
         printPithagorasMultiplicationTable();
@@ -19,20 +19,20 @@ public class CyclesTheme {
         System.out.println("1. Подсчет суммы четных и нечетных чисел");
 
         int i = -10;
-        int countEvenNums = 0;
-        int countOddNums = 0;
+        int sumEven = 0;
+        int sumOdd = 0;
 
         do {
             if (i % 2 == 0) {
-                countEvenNums = countEvenNums + i;
+                sumEven += i;
             } else {
-                countOddNums = countOddNums + i;
+                sumOdd += i;
             }
-        i++;
+            i++;
         } while (i < 22);
 
-        System.out.println("Сумма чисел между -1 и 21: четных " + countEvenNums + 
-                ", нечетных: " + countOddNums + ".");
+        System.out.println("Сумма чисел между -1 и 21: четных " + sumEven + 
+                ", нечетных: " + sumOdd + ".");
     }
 
     public static void printNumsBetweenMaxMin() {
@@ -43,18 +43,28 @@ public class CyclesTheme {
         int num2 = 5;
         int num3 = -1;
 
-        int maxNum = num1 > num2 ? num1 : num2;
-        maxNum = num3 > num2 ? num3 : maxNum;
+        // Previous code:
+        // int maxNum = num1 > num2 ? num1 : num2;
+        // maxNum = num3 > num2 ? num3 : maxNum;
 
-        int minNum = num1 < num2 ? num1 : num2;
-        minNum = num3 < num2 ? num3 : minNum;
+        // int minNum = num1 < num2 ? num1 : num2;
+        // minNum = num3 < num2 ? num3 : minNum;
+
+        // I'm not quite sure that I understand the mentor correctly about code reduction.
+        int maxNum = num1;
+        if (maxNum < num2) maxNum = num2;
+        if (maxNum < num3) maxNum = num3;
+        
+        int minNum = num2;
+        if (minNum > num1) minNum = num1;
+        if (minNum > num3) minNum = num3;
 
         System.out.println("Исходные числа: " + num1 + ", " + num2 + ", "+ num3 + 
-                ". \nМаксимальное число: " + maxNum + ", минимальное: "+ minNum);
+                ". \nМаксимальное число: " + maxNum + ", минимальное: " + minNum);
 
         System.out.print("Диапазон чисел:");
 
-        for (int i = maxNum; i >= minNum; i--) {
+        for (int i = maxNum - 1; i > minNum; i--) {
             System.out.print(" " + i);
         }
         System.out.println();
@@ -66,28 +76,43 @@ public class CyclesTheme {
 
         int srcNum = 1234;
 
-        String numByStr = Integer.toString(srcNum);
-        String reverseNumByStr = "";
-        String checkStr = "";
-        int i = 0;
-        int sum = 0;
+        int totalCountDigits = countDigitsInNumber(srcNum);
+        int digit;
+        int countDigits = 0;
+        int sumDigits = 0;
+        int reverseNum = 0;
+        int pow;
+        int num = srcNum;
 
         while (true) {
-            char charOfNum = numByStr.charAt(i);
-            reverseNumByStr = charOfNum + reverseNumByStr;
-            checkStr = checkStr + charOfNum;
-            sum = sum + Character.getNumericValue(charOfNum);
+            digit = num % 10;
+            num = num / 10;
+            sumDigits += digit;
+            ++countDigits;
 
-            if (numByStr.equals(checkStr)) {
-                break;
+            pow = 1;
+            for (int j = 0; j < (totalCountDigits - countDigits + 1); j++) {
+                pow = pow * 10;
             }
-            
-            i++;
+            pow = pow / 10;
+            reverseNum = reverseNum + digit * pow;
+
+            if (countDigits == totalCountDigits) break;
         }
 
         System.out.println("Исходное число: " + srcNum + 
-                ", реверсивное число " + Integer.parseInt(reverseNumByStr) + 
-                ", сумма цифр " + sum + ".");
+                ", реверсивное число " + reverseNum + 
+                ", сумма цифр " + sumDigits + ".");
+    }
+
+    private static int countDigitsInNumber(int num) {
+        int countDigits = 0;
+
+        while (true) {
+            num = num / 10;
+            ++countDigits;
+            if (num == 0) return countDigits;
+        }
     }
 
     public static void printNumsInSomeLines() {
@@ -98,8 +123,10 @@ public class CyclesTheme {
         int countNumsInLine = 0;
 
         for (int i = 1; i < 25; i += 2) {
-            countNumsInLine = countNumsInLine + 1;
-            System.out.format("%02d ", i);
+            countNumsInLine += 1;
+            // Commented previous code:
+            // System.out.format("%02d ", i);
+            System.out.printf("%3d", i);
 
             if (countNumsInLine == maxNumsInLine) {
                 System.out.println();
@@ -109,7 +136,9 @@ public class CyclesTheme {
 
         if (countNumsInLine != 0) {
             for (int j = countNumsInLine; j < maxNumsInLine; j++) {
-                System.out.print("00 ");
+                // Commented previous code:
+                // System.out.print(" 00");
+                System.out.printf("%3d", 0);
             }
         }
     }
@@ -120,25 +149,16 @@ public class CyclesTheme {
 
         int srcNum = 3141591;
 
-        String numByStr = Integer.toString(srcNum);
-        String checkStr = "";
-        int i = 0;
+        int num = srcNum;
         int countDigitsOne = 0;
+        int digit;
 
         while (true) {
-            char charOfNum = numByStr.charAt(i);
-            
-            if (charOfNum == '1') {
-                countDigitsOne = countDigitsOne + 1;
-            }
+            digit = num % 10;
+            num = num / 10;
 
-            checkStr = checkStr + charOfNum;
-
-            if (numByStr.equals(checkStr)) {
-                break;
-            }
-
-            i++;
+            if (digit == 1) ++countDigitsOne;
+            if (num == 0) break;
         }
 
         System.out.print("Исходное число: " + srcNum + ". Количество единиц: " + 
@@ -170,7 +190,7 @@ public class CyclesTheme {
             int countChars = 5 - i;
             while (countChars > 0) {
                 System.out.print("#");
-                countChars = countChars - 1;
+                countChars -= 1;
             }
             System.out.println();
             i++;
@@ -191,7 +211,7 @@ public class CyclesTheme {
         } while (i < 5);
     }
 
-    public static void printASCIIChars() {
+    public static void printAsciiChars() {
         // Отображение ASCII-символов
         System.out.println("\n7. Отображение ASCII-символов");
 
@@ -207,11 +227,10 @@ public class CyclesTheme {
         // printCharsRange(224, 241);
     }
 
-    public static void printCharsRange(int startCode, int finishCode) {
+    private static void printCharsRange(int startCode, int finishCode) {
         for (int i = startCode; i <= finishCode; i++) {
             if (i % 2 != 0) {
-                char letter = (char) i;
-                System.out.println(i + "  " + letter);
+                System.out.printf("%3d" + " " + (char) i + "\n", i);
             }
         }
     }
@@ -222,24 +241,31 @@ public class CyclesTheme {
 
         int srcNum = 1234321;
 
-        String numByStr = Integer.toString(srcNum);
-        String checkStr = "";
-        String reverseStr = "";
-        int i = 0;
+        int totalCountDigits = countDigitsInNumber(srcNum);
+        int digit;
+        int countDigits = 0;
+        int sumDigits = 0;
+        int reverseNum = 0;
+        int pow;
+        int num = srcNum;
 
         while (true) {
-            char charOfNum = numByStr.charAt(i);
-            reverseStr = "" + charOfNum + reverseStr;
-            checkStr = checkStr + charOfNum;
+            digit = num % 10;
+            num = num / 10;
+            sumDigits += digit;
+            ++countDigits;
 
-            if (numByStr.equals(checkStr)) {
-                break;
+            pow = 1;
+            for (int j = 0; j < (totalCountDigits - countDigits + 1); j++) {
+                pow = pow * 10;
             }
+            pow = pow / 10;
+            reverseNum = reverseNum + digit * pow;
 
-            i++;
+            if (countDigits == totalCountDigits) break;
         }
 
-        if (numByStr.equals(reverseStr)) {
+        if (reverseNum == srcNum) {
             System.out.println("Число '" + srcNum + "' является палиндромом.");
         } else {
             System.out.println("Число: '" + srcNum + "' не является палиндромом.");
@@ -252,17 +278,19 @@ public class CyclesTheme {
 
         int srcNum = 657963;
 
-        String numByStr = Integer.toString(srcNum);
+        int num = srcNum;
         int sumNums1 = 0;
         int sumNums2 = 0;
+        int digit;
 
         for (int i = 0; i < 6; i++) {
-            char charOfNum = numByStr.charAt(i);
+            digit = num % 10;
+            num = num / 10;
 
             if (i < 3) {
-                sumNums1 = sumNums1 + Character.getNumericValue(charOfNum);
+                sumNums1 += digit;
             } else {
-                sumNums2 = sumNums2 + Character.getNumericValue(charOfNum);
+                sumNums2 += digit;
             }
         }
 

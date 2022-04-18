@@ -43,14 +43,6 @@ public class CyclesTheme {
         int num2 = 5;
         int num3 = -1;
 
-        // Previous code:
-        // int maxNum = num1 > num2 ? num1 : num2;
-        // maxNum = num3 > num2 ? num3 : maxNum;
-
-        // int minNum = num1 < num2 ? num1 : num2;
-        // minNum = num3 < num2 ? num3 : minNum;
-
-        // I'm not quite sure that I understand the mentor correctly about code reduction.
         int maxNum = num1;
         if (maxNum < num2) maxNum = num2;
         if (maxNum < num3) maxNum = num3;
@@ -76,43 +68,21 @@ public class CyclesTheme {
 
         int srcNum = 1234;
 
-        int totalCountDigits = countDigitsInNumber(srcNum);
         int digit;
-        int countDigits = 0;
         int sumDigits = 0;
         int reverseNum = 0;
-        int pow;
-        int num = srcNum;
+        int currentNum = srcNum;
 
-        while (true) {
-            digit = num % 10;
-            num = num / 10;
+        while (currentNum != 0) {
+            digit = currentNum % 10;
             sumDigits += digit;
-            ++countDigits;
-
-            pow = 1;
-            for (int j = 0; j < (totalCountDigits - countDigits + 1); j++) {
-                pow = pow * 10;
-            }
-            pow = pow / 10;
-            reverseNum = reverseNum + digit * pow;
-
-            if (countDigits == totalCountDigits) break;
+            reverseNum = reverseNum * 10 + digit;
+            currentNum /= 10;
         }
 
         System.out.println("Исходное число: " + srcNum + 
                 ", реверсивное число " + reverseNum + 
                 ", сумма цифр " + sumDigits + ".");
-    }
-
-    private static int countDigitsInNumber(int num) {
-        int countDigits = 0;
-
-        while (true) {
-            num = num / 10;
-            ++countDigits;
-            if (num == 0) return countDigits;
-        }
     }
 
     public static void printNumsInSomeLines() {
@@ -123,9 +93,7 @@ public class CyclesTheme {
         int countNumsInLine = 0;
 
         for (int i = 1; i < 25; i += 2) {
-            countNumsInLine += 1;
-            // Commented previous code:
-            // System.out.format("%02d ", i);
+            countNumsInLine++;
             System.out.printf("%3d", i);
 
             if (countNumsInLine == maxNumsInLine) {
@@ -136,8 +104,6 @@ public class CyclesTheme {
 
         if (countNumsInLine != 0) {
             for (int j = countNumsInLine; j < maxNumsInLine; j++) {
-                // Commented previous code:
-                // System.out.print(" 00");
                 System.out.printf("%3d", 0);
             }
         }
@@ -149,16 +115,15 @@ public class CyclesTheme {
 
         int srcNum = 3141591;
 
-        int num = srcNum;
+        int currentNum = srcNum;
         int countDigitsOne = 0;
         int digit;
 
-        while (true) {
-            digit = num % 10;
-            num = num / 10;
+        while (currentNum / 10 != 0) {
+            digit = currentNum % 10;
+            currentNum /= 10;
 
             if (digit == 1) ++countDigitsOne;
-            if (num == 0) break;
         }
 
         System.out.print("Исходное число: " + srcNum + ". Количество единиц: " + 
@@ -241,28 +206,14 @@ public class CyclesTheme {
 
         int srcNum = 1234321;
 
-        int totalCountDigits = countDigitsInNumber(srcNum);
         int digit;
-        int countDigits = 0;
-        int sumDigits = 0;
         int reverseNum = 0;
-        int pow;
-        int num = srcNum;
+        int currentNum = srcNum;
 
-        while (true) {
-            digit = num % 10;
-            num = num / 10;
-            sumDigits += digit;
-            ++countDigits;
-
-            pow = 1;
-            for (int j = 0; j < (totalCountDigits - countDigits + 1); j++) {
-                pow = pow * 10;
-            }
-            pow = pow / 10;
-            reverseNum = reverseNum + digit * pow;
-
-            if (countDigits == totalCountDigits) break;
+        while (currentNum != 0) {
+            digit = currentNum % 10;
+            reverseNum = reverseNum * 10 + digit;
+            currentNum /= 10;
         }
 
         if (reverseNum == srcNum) {
@@ -278,23 +229,22 @@ public class CyclesTheme {
 
         int srcNum = 657963;
 
-        int num = srcNum;
-        int sumNums1 = 0;
-        int sumNums2 = 0;
+        int currentNum = srcNum;
+        int checkSum = 0;
         int digit;
 
         for (int i = 0; i < 6; i++) {
-            digit = num % 10;
-            num = num / 10;
+            digit = currentNum % 10;
+            currentNum /= 10;
 
             if (i < 3) {
-                sumNums1 += digit;
+                checkSum += digit;
             } else {
-                sumNums2 += digit;
+                checkSum -= digit;
             }
         }
 
-        if (sumNums1 == sumNums2) {
+        if (checkSum == 0) {
             System.out.println("Число " + srcNum + " счастливое.");
         } else {
             System.out.println("Число " + srcNum + " не счастливое.");
@@ -307,17 +257,14 @@ public class CyclesTheme {
 
         System.out.print("  | ");
         for (int i = 2; i < 10; i++) {
-            System.out.format("% 2d ", i);
+            System.out.format("%2d ", i);
         }
         System.out.println("\n---------------------------");
 
         for (int i = 2; i < 10; i++) {
-            System.out.print(i + " | ");
+            System.out.print(i + " |");
             for (int j = 2; j < 10; j++) {
-                // I've commented the code below because it doesn't work as I expected 
-                // (only ' ' without '0'):
-                // System.out.format("% 2d ", i * j);
-                System.out.format("%02d ", i * j);
+                System.out.format("%3d", i * j);
             }
             System.out.println();
         }

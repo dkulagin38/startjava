@@ -1,30 +1,30 @@
 public class GuessNumber {
     public static void main(String[] args) {
         // A computer input "random" value of number (an integer from 0 to 100)
-        int srcNum = 85;
+        int targetNum = 85;
         // A person input "random" value of number
         int guessNum = 51;
         // Variables
         int halfDelta;
 
-        while (guessNum != srcNum) {
-            if (guessNum > srcNum) {
+        while (guessNum != targetNum) {
+            if (guessNum > targetNum) {
                 System.out.println("Введенное вами число: " + guessNum + 
-                        " больше того, что загадал компьютер загадал: " + srcNum);
+                        " больше того, что загадал компьютер загадал: " + targetNum);
                 // A person input "random" value of number
-                halfDelta = (guessNum - srcNum) / 2;
+                halfDelta = (guessNum - targetNum) / 2;
                 if (halfDelta == 0) halfDelta = 1;
-                guessNum = guessNum - halfDelta;
+                guessNum -= halfDelta;
             } else {
                 System.out.println("Введенное вами число: " + guessNum + 
-                        " меньше того, что загадал компьютер загадал: " + srcNum);
+                        " меньше того, что загадал компьютер загадал: " + targetNum);
                 // A person input "random" value of number
-                halfDelta = (srcNum - guessNum) / 2;
+                halfDelta = (targetNum - guessNum) / 2;
                 if (halfDelta == 0) halfDelta = 1;
-                guessNum = guessNum + halfDelta;
+                guessNum += halfDelta;
             }
         }
 
-        System.out.println("Вы угадали: " + guessNum + " = " + srcNum);
+        System.out.println("Вы угадали: " + guessNum + " = " + targetNum);
     }
 }

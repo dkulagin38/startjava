@@ -1,30 +1,30 @@
 public class Calculator {
     public static void main(String[] args) {
         // Input data
-        int inputValue1 = 11;
-        int inputValue2 = 3;
+        int num1 = 11;
+        int num2 = 3;
         char sign = '^';
 
         // Output data
         int result = 0;
 
         if (sign == '+') {
-            result = inputValue1 + inputValue2;
+            result = num1 + num2;
         } else if (sign == '-') {
-            result = inputValue1 - inputValue2;
+            result = num1 - num2;
         } else if (sign == '*') {
-            result = inputValue1 * inputValue2;
+            result = num1 * num2;
         } else if (sign == '/') {
-            result = inputValue1 / inputValue2;
+            result = num1 / num2;
         } else if (sign == '^') {
             result = 1;
-            for (int i = 0; i < inputValue2; i++) {
-                result = result * inputValue1;
+            for (int i = 0; i < num2; i++) {
+                result = result * num1;
             }
         } else if (sign == '%') {
-            result = inputValue1 % inputValue2;
+            result = num1 % num2;
         }
 
-        System.out.println(inputValue1 + " " + sign + " " + inputValue2 + " = " + result);
+        System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
     }
 }

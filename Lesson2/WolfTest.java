@@ -2,14 +2,16 @@ public class WolfTest {
 
     public static void main(String[] args) {
         Wolf primalWolf = new Wolf();
-        primalWolf.name = "White fang";
-        primalWolf.sex = "Indefinite";
-        primalWolf.age = 1;
+        primalWolf.setName("White fang");
+        primalWolf.setSex("Indefinite");
+        primalWolf.setAge(9);
+        primalWolf.setWeight(88);
 
-        // Attributes
-        System.out.println("Name: " + primalWolf.name);
-        System.out.println("Sex: " + primalWolf.sex);
-        System.out.println("Age: " + primalWolf.age);
+        // Instance variables
+        System.out.println("Name: " + primalWolf.getName());
+        System.out.println("Sex: " + primalWolf.getSex());
+        System.out.println("Age: " + primalWolf.getAge());
+        System.out.println("Weight: " + primalWolf.getWeight());
 
         // Methods
         primalWolf.move();

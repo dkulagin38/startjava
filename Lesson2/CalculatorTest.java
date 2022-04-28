@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class CalculatorTest {
 
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        Calculator calc = new Calculator();
+
         while (true) {
-
-            Scanner scan = new Scanner(System.in);
-
             System.out.print("Введите первое число: ");
             int num1 = scan.nextInt();
 
@@ -16,23 +16,23 @@ public class CalculatorTest {
             System.out.print("Введите второе число: ");
             int num2 = scan.nextInt();
 
-            Calculator calc = new Calculator();
             calc.calculate(num1, num2, sign);
 
-            // I use this code because the 'nextLine' have skipped at the first time.
+            // I use this code because the 'nextLine' has skipped at the first time.
             scan.nextLine();
+            
+            String continueMessage = "Хотите продолжить вычисления? [yes/no]:";
+            System.out.print(continueMessage);
+            String answer = scan.nextLine();
 
-            while (true) {
-                System.out.print("Хотите продолжить вычисления? [yes/no]:");
-                String answer = scan.nextLine();
+            while (!(answer.equals("yes") || answer.equals("y") 
+                || answer.equals("no") || answer.equals("n"))) {
+                System.out.print("Некорректный ответ. Попробуйте еще раз.\n" + continueMessage);
+                answer = scan.nextLine();
+            }
 
-                if (answer.equals("yes") || answer.equals("y")) {
-                    break;
-                } else if (answer.equals("no") || answer.equals("n")) {
-                    return;
-                } else {
-                    System.out.println("Некорректный ответ. Попробуйте еще раз.");
-                }
+            if (answer.equals("no") || answer.equals("n")) {
+                return;
             }
         }
     }

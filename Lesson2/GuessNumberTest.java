@@ -17,7 +17,7 @@ public class GuessNumberTest {
             GuessNumber.playGame(player1, player2);
 
             if (!userWantsToStartNewGame()) {
-                return;
+                break;
             }
         }
     }

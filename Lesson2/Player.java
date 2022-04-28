@@ -3,9 +3,8 @@ import java.util.Scanner;
 public class Player {
 
     private String name;
-    private int num;
 
-    // Accessors & Mutators
+    // Accessors & mutators
     public String getName() {
         return name;
     }
@@ -14,16 +13,15 @@ public class Player {
         this.name = name;
     }
 
-    public int getNum() {
-        return num;
+    // Behaviour player's methods
+    public String enterName(int serialNum) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Введите имя " + serialNum + "-го игрока: ");
+        name = scan.nextLine();
+        return name;
     }
 
-    public void setNum(int num) {
-        this.num = num;
-    }
-
-    // The main methods
-    public int enterNum(String playerName) {
+    public int enterNumber(String playerName) {
         Scanner scan = new Scanner(System.in);
         System.out.print("\n" + playerName + ", введите число: ");
         int num = scan.nextInt();

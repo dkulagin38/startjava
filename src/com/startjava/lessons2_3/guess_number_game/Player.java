@@ -16,13 +16,6 @@ public class Player {
     }
 
     // Behaviour player's methods
-    public String enterName(int serialNum) {
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Введите имя " + serialNum + "-го игрока: ");
-        name = scan.nextLine();
-        return name;
-    }
-
     public int enterNumber(String playerName) {
         Scanner scan = new Scanner(System.in);
         System.out.print("\n" + playerName + ", введите число: ");

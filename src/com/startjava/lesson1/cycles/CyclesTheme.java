@@ -1,4 +1,4 @@
-// import java.util.Scanner;
+package com.startjava.lesson1.cycles;
 
 public class CyclesTheme {
     public static void main(String[] args) {

@@ -1,3 +1,5 @@
+package com.startjava.lesson1.guess_number;
+
 public class GuessNumber {
     public static void main(String[] args) {
         // A computer input "random" value of number (an integer from 0 to 100)

@@ -1,3 +1,5 @@
+package com.startjava.lesson1.conditions;
+
 public class IfElseStatementTheme {
     public static void main(String[] args) {
         transferPseudocodeToJava();

@@ -8,17 +8,8 @@ public class GuessNumberTest {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
-            // Enter players' names
-            Player player1 = new Player();
-            System.out.print("\nВведите имя 1-го игрока: ");
-            player1.setName(scan.nextLine());
-
-            Player player2 = new Player();
-            System.out.print("Введите имя 2-го игрока: ");
-            player2.setName(scan.nextLine());
-
             GuessNumber GuessNumber = new GuessNumber();
-            GuessNumber.playGame(player1, player2);
+            GuessNumber.playGame();
 
             if (!isNext()) {
                 break;

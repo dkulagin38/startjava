@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Player {
 
-    private String name;
+    private String name = "";
+    private int num = 0;
 
     // Accessors & mutators
     public String getName() {
@@ -15,11 +16,17 @@ public class Player {
         this.name = name;
     }
 
-    // Behaviour player's methods
-    public int enterNumber(String playerName) {
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public void enterNumber(String playerName) {
         Scanner scan = new Scanner(System.in);
         System.out.print("\n" + playerName + ", введите число: ");
-        int num = scan.nextInt();
-        return num;
+        num = scan.nextInt();
     }
 }

@@ -13,36 +13,30 @@ public class GuessNumber {
         this.player2 = player2;
     }
 
-    public void playGame() {
+    public void gameLaunch() {
         Random rnd = new Random();
-        int computerNum = rnd.nextInt(100);
+        int targetNumber = rnd.nextInt(101);
         System.out.println("\n*** This is a secret message, nobody knows that one! ***");
-        System.out.println("The computer have invented the number: " + computerNum + ".");
+        System.out.println("The computer have invented the number: " + targetNumber + ".");
 
-        String playerName;
         int playerNum;
 
         // The loop for guessing of the computer number.
         while (true) {
-            playerName = player1.getName();
-            playerNum = enterNumber(playerName);
+            playerNum = enterNumber(player1.getName());
             player1.setNum(playerNum);
 
-            if (compareNumbers(computerNum, playerNum)) {
+            if (compareNumbers(targetNumber, playerNum, player1.getName())) {
                 break;
             }
 
-            playerName = player2.getName();
-            playerNum = enterNumber(playerName);
+            playerNum = enterNumber(player2.getName());
             player2.setNum(playerNum);
 
-            if (compareNumbers(computerNum, playerNum)) {
+            if (compareNumbers(targetNumber, playerNum, player2.getName())) {
                 break;
             }
         }
-
-        // The end of the game.
-        System.out.println("\nПобедил игрок: " + playerName);
     }
 
     private int enterNumber(String playerName) {
@@ -51,13 +45,14 @@ public class GuessNumber {
         return scan.nextInt();
     }
 
-    private static boolean compareNumbers(int computerNum, int playerNum) {
-        if (playerNum == computerNum) {
-            System.out.println("Вы угадали!");
+    private static boolean compareNumbers(int targetNumber, int playerNum, String playerName) {
+        if (playerNum == targetNumber) {
+            System.out.println(playerName + ", Вы угадали!");
+            System.out.println("\nПобедил игрок: " + playerName);
             return true;
         }
 
-        String wordGreaterLess = (playerNum < computerNum) ? "меньше" : "больше";
+        String wordGreaterLess = (playerNum < targetNumber) ? "меньше" : "больше";
         System.out.println("Число " + playerNum + " " + wordGreaterLess + 
                 " того, что загадал компьютер.");
         return false;

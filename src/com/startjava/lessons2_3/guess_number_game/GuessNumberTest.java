@@ -4,52 +4,58 @@ import java.util.Scanner;
 
 public class GuessNumberTest {
 
+    static Scanner scan = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
         Player player1;
         Player player2;
-        GuessNumber GuessNumber;
+        GuessNumber guessNumber;
 
-        while (true) {
-            // Enter players.
-            System.out.print("\nВведите имя 1-го игрока: ");
-            String name = scan.nextLine();
-            player1 = new Player(name);
+        // Enter players.
+        System.out.print("\nВведите имя 1-го игрока: ");
+        String name = scan.nextLine();
+        player1 = new Player(name);
 
-            System.out.print("\nВведите имя 2-го игрока: ");
-            name = scan.nextLine();
-            player2 = new Player(name);
+        System.out.print("\nВведите имя 2-го игрока: ");
+        name = scan.nextLine();
+        player2 = new Player(name);
 
-            GuessNumber = new GuessNumber(player1, player2);
-            GuessNumber.playGame();
-
-            if (!isNext()) {
-                break;
-            }
-        }
+        do {
+            guessNumber = new GuessNumber(player1, player2);
+            guessNumber.gameLaunch();
+        } while (isNext());
     }
 
     private static boolean isNext() {
         String continueMessage = "Хотите продолжить игру? [yes/no]: ";
         System.out.print(continueMessage);
 
-        Scanner scan = new Scanner(System.in);
         String answer;
 
         do {
             answer = scan.nextLine();
-            if (!(answer.equals("yes") || answer.equals("y") 
-                || answer.equals("no") || answer.equals("n"))) {
+            if (!isCorrectAnswer(answer)) {
                 System.out.println("Некорректный ответ. Попробуйте еще раз.\n");
                 System.out.print(continueMessage);
             }
-        } while (!(answer.equals("yes") || answer.equals("y") 
-            || answer.equals("no") || answer.equals("n")));
+        } while (!isCorrectAnswer(answer));
 
-        if (answer.equals("yes") || answer.equals("y")) {
+        if (isAnswerYes(answer)) {
             return true;
         } else {
             return false;
         }
+    }
+
+    private static boolean isCorrectAnswer(String answer) {
+        return (isAnswerYes(answer) || isAnswerNo(answer));
+    }
+    
+    private static boolean isAnswerYes(String answer) {
+        return (answer.equals("yes") || answer.equals("y"));
+    }
+
+    private static boolean isAnswerNo(String answer) {
+        return (answer.equals("no") || answer.equals("n"));
     }
 }

@@ -7,22 +7,17 @@ public class GuessNumberTest {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Player player1;
-        Player player2;
-        GuessNumber guessNumber;
+        GuessNumber game;
 
         // Enter players.
         System.out.print("\nВведите имя 1-го игрока: ");
-        String name = scan.nextLine();
-        player1 = new Player(name);
-
+        Player player1 = new Player(scan.nextLine());
         System.out.print("\nВведите имя 2-го игрока: ");
-        name = scan.nextLine();
-        player2 = new Player(name);
+        Player player2 = new Player(scan.nextLine());
 
         do {
-            guessNumber = new GuessNumber(player1, player2);
-            guessNumber.gameLaunch();
+            game = new GuessNumber(player1, player2);
+            game.launch();
         } while (isNext());
     }
 
@@ -40,22 +35,14 @@ public class GuessNumberTest {
             }
         } while (!isCorrectAnswer(answer));
 
-        if (isAnswerYes(answer)) {
-            return true;
-        } else {
-            return false;
-        }
+        return isAnswerYes(answer);
     }
 
     private static boolean isCorrectAnswer(String answer) {
-        return (isAnswerYes(answer) || isAnswerNo(answer));
+        return (isAnswerYes(answer) || answer.equals("no") || answer.equals("n"));
     }
     
     private static boolean isAnswerYes(String answer) {
         return (answer.equals("yes") || answer.equals("y"));
-    }
-
-    private static boolean isAnswerNo(String answer) {
-        return (answer.equals("no") || answer.equals("n"));
     }
 }

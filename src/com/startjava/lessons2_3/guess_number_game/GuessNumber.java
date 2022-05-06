@@ -7,15 +7,25 @@ public class GuessNumber {
 
     private Player player1;
     private Player player2;
+    private int targetNumber;
+
+    // Accessors & mutators
+    public int getTargetNumber() {
+        return targetNumber;
+    }
+
+    public void setTargetNumber(int targetNumber) {
+        this.targetNumber = targetNumber;
+    }
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
     }
 
-    public void gameLaunch() {
+    public void launch() {
         Random rnd = new Random();
-        int targetNumber = rnd.nextInt(101);
+        setTargetNumber(rnd.nextInt(100) + 1);
         System.out.println("\n*** This is a secret message, nobody knows that one! ***");
         System.out.println("The computer have invented the number: " + targetNumber + ".");
 
@@ -25,17 +35,11 @@ public class GuessNumber {
         while (true) {
             playerNum = enterNumber(player1.getName());
             player1.setNum(playerNum);
-
-            if (compareNumbers(targetNumber, playerNum, player1.getName())) {
-                break;
-            }
+            if (compareNumbers(player1)) {break;}
 
             playerNum = enterNumber(player2.getName());
             player2.setNum(playerNum);
-
-            if (compareNumbers(targetNumber, playerNum, player2.getName())) {
-                break;
-            }
+            if (compareNumbers(player2)) {break;}
         }
     }
 
@@ -45,15 +49,14 @@ public class GuessNumber {
         return scan.nextInt();
     }
 
-    private static boolean compareNumbers(int targetNumber, int playerNum, String playerName) {
-        if (playerNum == targetNumber) {
-            System.out.println(playerName + ", Вы угадали!");
-            System.out.println("\nПобедил игрок: " + playerName);
+    private boolean compareNumbers(Player player) {
+        if (player.getNum() == targetNumber) {
+            System.out.println("\nИгрок " + player.getName() + " угадал число.");
             return true;
-        }
+    }
 
-        String wordGreaterLess = (playerNum < targetNumber) ? "меньше" : "больше";
-        System.out.println("Число " + playerNum + " " + wordGreaterLess + 
+        String wordGreaterLess = (player.getNum() < targetNumber) ? "меньше" : "больше";
+        System.out.println("Число " + player.getNum() + " " + wordGreaterLess + 
                 " того, что загадал компьютер.");
         return false;
     }

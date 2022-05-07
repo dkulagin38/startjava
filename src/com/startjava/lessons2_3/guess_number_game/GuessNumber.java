@@ -9,15 +9,6 @@ public class GuessNumber {
     private Player player2;
     private int targetNumber;
 
-    // Accessors & mutators
-    public int getTargetNumber() {
-        return targetNumber;
-    }
-
-    public void setTargetNumber(int targetNumber) {
-        this.targetNumber = targetNumber;
-    }
-
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
@@ -25,21 +16,21 @@ public class GuessNumber {
 
     public void launch() {
         Random rnd = new Random();
-        setTargetNumber(rnd.nextInt(100) + 1);
+        targetNumber = rnd.nextInt(100) + 1;
         System.out.println("\n*** This is a secret message, nobody knows that one! ***");
         System.out.println("The computer have invented the number: " + targetNumber + ".");
 
         int playerNum;
 
-        // The loop for guessing of the computer number.
+        // The loop for guessing of the target number.
         while (true) {
             playerNum = enterNumber(player1.getName());
             player1.setNum(playerNum);
-            if (compareNumbers(player1)) {break;}
+            if (compareNumbers(player1)) break;
 
             playerNum = enterNumber(player2.getName());
             player2.setNum(playerNum);
-            if (compareNumbers(player2)) {break;}
+            if (compareNumbers(player2)) break;
         }
     }
 
@@ -53,7 +44,7 @@ public class GuessNumber {
         if (player.getNum() == targetNumber) {
             System.out.println("\nИгрок " + player.getName() + " угадал число.");
             return true;
-    }
+        }
 
         String wordGreaterLess = (player.getNum() < targetNumber) ? "меньше" : "больше";
         System.out.println("Число " + player.getNum() + " " + wordGreaterLess + 

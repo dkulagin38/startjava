@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class CalculatorTest {
 
-    public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        Calculator calc = new Calculator();
+    static Scanner scan = new Scanner(System.in);
 
-        while (true) {
+    public static void main(String[] args) {
+        do {
+            Calculator calc = new Calculator();
+
             System.out.print("Введите первое число: ");
             int num1 = scan.nextInt();
 
@@ -22,20 +23,31 @@ public class CalculatorTest {
 
             // I use this code because the 'nextLine' has skipped at the first time.
             scan.nextLine();
-            
-            String continueMessage = "Хотите продолжить вычисления? [yes/no]:";
-            System.out.print(continueMessage);
-            String answer = scan.nextLine();
+        } while (isNext());
+    }
 
-            while (!(answer.equals("yes") || answer.equals("y") 
-                || answer.equals("no") || answer.equals("n"))) {
-                System.out.print("Некорректный ответ. Попробуйте еще раз.\n" + continueMessage);
-                answer = scan.nextLine();
-            }
+    private static boolean isNext() {
+        String continueMessage = "Хотите продолжить игру? [yes/no]: ";
+        System.out.print(continueMessage);
 
-            if (answer.equals("no") || answer.equals("n")) {
-                return;
+        String answer;
+
+        do {
+            answer = scan.nextLine();
+            if (!isCorrectAnswer(answer)) {
+                System.out.println("Некорректный ответ. Попробуйте еще раз.\n");
+                System.out.print(continueMessage);
             }
-        }
+        } while (!isCorrectAnswer(answer));
+
+        return isAnswerYes(answer);
+    }
+
+    private static boolean isCorrectAnswer(String answer) {
+        return (isAnswerYes(answer) || answer.equals("no") || answer.equals("n"));
+    }
+    
+    private static boolean isAnswerYes(String answer) {
+        return (answer.equals("yes") || answer.equals("y"));
     }
 }

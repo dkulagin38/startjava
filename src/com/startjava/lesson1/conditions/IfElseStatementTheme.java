@@ -108,14 +108,26 @@ public class IfElseStatementTheme {
         // Определение буквы, числа или символа по их коду
         System.out.println("\n5. Определение буквы, числа или символа по их коду\n");
 
-        char unknownChar = '\u005A';
-
-        if ((unknownChar >= 'A' && unknownChar <= 'Z') || 
+        char unknownChar = '\u0057';
+/*
+    * I've commented the code below because of errors in IntelliJ IDEA.
+    * I removed check russian letters for the time being.
+        if ((unknownChar >= 'A' && unknownChar <= 'Z') ||
                 (unknownChar >= 'А' && unknownChar <= 'Я')) {
                     System.out.println("Символ: '" + unknownChar + "' - большая буква.");
-        } else if ((unknownChar >= 'a' && unknownChar <= 'z') || 
+        } else if ((unknownChar >= 'a' && unknownChar <= 'z') ||
                 (unknownChar >= 'а' && unknownChar <= 'я')) {
                     System.out.println("Символ: '" + unknownChar + "' - маленькая буква.");
+        } else if (unknownChar >= '0' && unknownChar <= '9') {
+            System.out.println("Символ: '" + unknownChar + "' - число.");
+        } else {
+            System.out.println("Символ: '" + unknownChar + "' - не буква и не число.");
+        }
+*/
+        if (unknownChar >= 'A' && unknownChar <= 'Z') {
+            System.out.println("Символ: '" + unknownChar + "' - большая буква.");
+        } else if (unknownChar >= 'a' && unknownChar <= 'z') {
+            System.out.println("Символ: '" + unknownChar + "' - маленькая буква.");
         } else if (unknownChar >= '0' && unknownChar <= '9') {
             System.out.println("Символ: '" + unknownChar + "' - число.");
         } else {

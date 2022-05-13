@@ -1,4 +1,4 @@
-package com.startjava.lesson4.array;
+package com.startjava.lessons2_3_4.array;
 
 public class ArrayMain {
 

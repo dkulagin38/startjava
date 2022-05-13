@@ -1,16 +1,17 @@
-package com.startjava.lessons2_3.guess_number_game;
+package com.startjava.lessons2_3_4.guess_number_game;
 
 import java.util.Scanner;
 
-public class GuessNumberTest {
+public class GuessNumberMain {
 
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+        System.out.println("У каждого игрока по 10 попыток");
         // Enter players.
-        System.out.println("Введите имя 1-го игрока: ");
+        System.out.print("Введите имя 1-го игрока: ");
         Player player1 = new Player(scan.nextLine());
-        System.out.println("Введите имя 2-го игрока: ");
+        System.out.print("Введите имя 2-го игрока: ");
         Player player2 = new Player(scan.nextLine());
 
         do {
@@ -20,7 +21,7 @@ public class GuessNumberTest {
     }
 
     private static boolean isNext() {
-        String continueMessage = "Хотите продолжить игру? [yes/no]: ";
+        String continueMessage = "\n\nХотите продолжить игру? [yes/no]: ";
         System.out.print(continueMessage);
 
         String answer;
@@ -28,7 +29,7 @@ public class GuessNumberTest {
         do {
             answer = scan.nextLine();
             if (!isCorrectAnswer(answer)) {
-                System.out.println("Некорректный ответ. Попробуйте еще раз.\n");
+                System.out.print("Некорректный ответ. Попробуйте еще раз.");
                 System.out.print(continueMessage);
             }
         } while (!isCorrectAnswer(answer));

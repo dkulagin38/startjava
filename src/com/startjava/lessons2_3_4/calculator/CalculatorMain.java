@@ -1,5 +1,6 @@
-package com.startjava.lesson4.calculator;
+package com.startjava.lessons2_3_4.calculator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CalculatorMain {
@@ -23,12 +24,14 @@ public class CalculatorMain {
                 continue;
             }
 
-            int num1 = Integer.parseInt(mathElements[0]);
-            int num2 = Integer.parseInt(mathElements[2]);
-            char sign = mathElements[1].charAt(0);
+            int result = calc.calculate(mathElements);
+/*
+            I don't use the value below because the result is "[2, ^, 10]" instead of "2 ^ 10".
+            String strMathElements = Arrays.toString(mathElements);
+            System.out.println(strMathElements + " = " + result);
+*/
+            System.out.println(mathElements[0] + " " + mathElements[1] + " " + mathElements[2] + " = " + result);
 
-            int result = calc.calculate(num1, num2, sign);
-            System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
         } while (isNext(askNext));
     }
 

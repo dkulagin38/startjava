@@ -16,10 +16,6 @@ public class Player {
         return name;
     }
 
-    public int getNumber(int index) {
-        return numbers[index];
-    }
-
     public int getCountAttempts() {
         return countAttempts;
     }
@@ -39,8 +35,8 @@ public class Player {
     public void clearPreviousGameNumbers() {
         if (countAttempts > 0) {
             Arrays.fill(numbers, 0, countAttempts - 1, 0);
+            countAttempts = 0;
         }
-        countAttempts = 0;
     }
 
     public int[] getUsedNumbers() {

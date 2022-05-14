@@ -2,7 +2,6 @@ package com.startjava.lessons2_3_4.guess_number_game;
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class GuessNumber {
 
@@ -22,7 +21,7 @@ public class GuessNumber {
         Random rnd = new Random();
         targetNumber = rnd.nextInt(100) + 1;
 
-//        This is a debug message. It's have to comment or delete after debugging.
+        // This message is using for debugging only. The message have to comment or delete after debugging.
         System.out.println("\n*** This is a secret message, nobody knows that one! ***");
         System.out.println("The computer have invented the number: " + targetNumber + ".");
 

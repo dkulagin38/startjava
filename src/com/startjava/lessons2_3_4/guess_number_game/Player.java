@@ -20,26 +20,26 @@ public class Player {
         return countAttempts;
     }
 
-    public void setCountAttempts(int countAttempts) {
-        this.countAttempts = countAttempts;
+    public void setCountAttempt(int countAttempt) {
+        countAttempts = countAttempt;
     }
 
-    public void setNumber(int number, int index) {
-        numbers[index] = number;
+    public void setNumber(int number) {
+        numbers[countAttempts - 1] = number;
     }
 
     public int getLastNumber() {
         return numbers[countAttempts - 1];
     }
 
-    public void clearPreviousGameNumbers() {
+    public void resetNumbers() {
         if (countAttempts > 0) {
             Arrays.fill(numbers, 0, countAttempts - 1, 0);
             countAttempts = 0;
         }
     }
 
-    public int[] getUsedNumbers() {
+    public int[] getNumbers() {
         return Arrays.copyOf(numbers, countAttempts);
     }
 }

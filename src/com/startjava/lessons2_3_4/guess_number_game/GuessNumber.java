@@ -15,8 +15,8 @@ public class GuessNumber {
     }
 
     public void launch() {
-        player1.clearPreviousGameNumbers();
-        player2.clearPreviousGameNumbers();
+        player1.resetNumbers();
+        player2.resetNumbers();
 
         Random rnd = new Random();
         targetNumber = rnd.nextInt(100) + 1;
@@ -27,17 +27,17 @@ public class GuessNumber {
 
         // The loop for guessing of the target number.
         for (int i = 0; i < 10; i++) {
-            if (successGuessAttempt(player1, i)) break;
-            if (successGuessAttempt(player2, i)) break;
+            if (isGuessed(player1, i)) break;
+            if (isGuessed(player2, i)) break;
         }
         printAllPlayerNumbers(player1);
         printAllPlayerNumbers(player2);
     }
 
-    private boolean successGuessAttempt(Player player, int attemptIndex) {
+    private boolean isGuessed(Player player, int attemptIndex) {
         int playerNum = enterNumber(player);
-        player.setCountAttempts(attemptIndex + 1);
-        player.setNumber(playerNum, attemptIndex);
+        player.setCountAttempt(attemptIndex + 1);
+        player.setNumber(playerNum);
         if (compareNumbers(player)) return true;
         if (attemptIndex == 9) {
             System.out.println("У " + player.getName() + " закончились попытки.");
@@ -66,7 +66,7 @@ public class GuessNumber {
 
     private void printAllPlayerNumbers(Player player) {
         System.out.print("\nИгрок " + player.getName() + " называл числа:");
-        int[] usedNumbers = player.getUsedNumbers();
+        int[] usedNumbers = player.getNumbers();
         for (int number : usedNumbers) {
             System.out.print(" " + number);
         }

@@ -22,7 +22,7 @@ public class Calculator {
             case '^':
                 return (int) Math.pow(num1, num2);
             default:
-                System.out.println("Введено некорректное значения арифметического знака.");
+                System.out.println("Введено некорректное значение арифметического знака.");
                 return 0;
         }
     }
